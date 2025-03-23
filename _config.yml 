@@ -1,0 +1,4 @@
+theme: null
+
+exclude:
+  - assets/css/style.css
