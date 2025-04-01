@@ -1,3 +1,5 @@
+@import './globals.css';  /* variables */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,10 +7,6 @@
 }
 
 :root {
-    --neutral: #F1EFEF;
-    --primary: #945E47;
-    --secondary: #E1B591;
-    /* height: 100vh; */
     height: 100vh;
 }
 
@@ -61,9 +59,19 @@ body {
     text-decoration: underline;
 }
 
-.hero {
+.main {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
+}
+
+.section {
+    padding: 0 2rem;
+}
+
+.hero {
+    /* border: solid red 10px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,7 +89,9 @@ body {
 }
 
 
+/* -------- privacy policy start -------- */
 .privacy-policy-container {
+    flex-grow: 1;
     padding: 2rem;
 }
 
@@ -89,4 +99,4 @@ body {
     padding: 2rem;
     background-color: var(--secondary);
 }
-
+/* -------- privacy policy end -------- */
