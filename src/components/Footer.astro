@@ -1,0 +1,85 @@
+---
+const currentYear = new Date().getFullYear();
+
+interface Link {
+  text: string;
+  href: string;
+  isExternal?: boolean;
+}
+
+const footerLinks = [
+  {
+    title: "Legal",
+    links: [
+      { text: "Privacy Policy", href: "/privacy-policy" },
+      { text: "Disclaimer", href: "/disclaimer" },
+    ] as Link[]
+  },
+  {
+    title: "Connect",
+    links: [
+      { 
+        text: "Facebook", 
+        href: "https://www.facebook.com/profile.php?id=61574484063822",
+        isExternal: true 
+      }
+    ] as Link[]
+  }
+];
+---
+
+<footer class="bg-gray-50 border-t border-gray-200 mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <!-- Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand Section -->
+      <div class="text-center md:text-left col-span-1">
+        <a href="/">
+          <h2 class="text-xl font-bold text-gray-900">Health Body Balance</h2>
+        </a>
+        <p class="mt-2 text-sm text-gray-600">
+          Building a community dedicated to wellness and balanced living.
+        </p>
+      </div>
+
+      <!-- Links Sections -->
+      {footerLinks.map((category) => (
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+            {category.title}
+          </h3>
+          <ul class="mt-4 space-y-3">
+            {category.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-base text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                  {...(link.isExternal && { target: "_blank", rel: "noopener noreferrer" })}
+                >
+                  {link.text}
+                  {link.isExternal && (
+                    <span class="inline-block ml-1">
+                      <svg class="h-4 w-4 inline" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                      </svg>
+                    </span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Facebook Disclaimer -->
+    <div class="mt-8 pt-8 border-t border-gray-200">
+      <p class="text-center text-xs text-gray-500 mb-4">
+        This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
+      </p>
+      <p class="text-center text-sm text-gray-500">
+        © {currentYear} Health Body Balance. All rights reserved.
+      </p>
+    </div>
+</footer>
